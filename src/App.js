@@ -6,7 +6,7 @@ import 'antd/dist/antd.css';
 import { Layout, Menu, Breadcrumb } from 'antd';
 /////Root of Equation
 import bisection from './paper/Root of eqution/bisection'
-import False_positon from './paper/Root of eqution/False_positon'
+import False_position from './paper/Root of eqution/False_position'
 import One_point from './paper/Root of eqution/One_point'
 import Newton_Rapshon from './paper/Root of eqution/Newton_Rapshon'
 import Secant_Method from './paper/Root of eqution/Secant_Method'
@@ -81,7 +81,7 @@ class App extends Component {
                 }
               >
                 <Menu.Item key="6">Bisection<Link to="/bisection" /></Menu.Item>
-                <Menu.Item key="a">False postion<Link to="/False_positon" />/</Menu.Item>
+                <Menu.Item key="a">False position<Link to="/False_position" />/</Menu.Item>
                 <Menu.Item key="b">One-point itreation<Link to="/One_point" /></Menu.Item>
                 <Menu.Item key="z">Newton-Raphson<Link to="Newton_Rapshon" /></Menu.Item>
                 <Menu.Item key="x">Secant Method<Link to="Secant_Method" /></Menu.Item>
@@ -171,7 +171,7 @@ class App extends Component {
             <Content style={{ margin: '0 16px' }}>
 
               <Route path="/bisection" component={bisection} />
-              <Route path="/False_positon" component={False_positon} />
+              <Route path="/False_position" component={False_position} />
               <Route path="/One_point" component={One_point} />
               <Route path="/Newton_Rapshon" component={Newton_Rapshon} />
               <Route path="/Secant_Method" component={Secant_Method} />
