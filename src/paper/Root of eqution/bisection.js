@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import {Card, Input, Button, Table} from 'antd';
+import { Card, Input, Button, Table } from 'antd';
 import 'antd/dist/antd.css';
-import { compile ,range} from 'mathjs';
+import { compile, range } from 'mathjs';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 import axios from 'axios'
 
@@ -9,19 +9,19 @@ import axios from 'axios'
 var dataInTable = []
 const columns = [
     {
-      title: "Iteration",
-      dataIndex: "iteration",
-      key: "iteration"
+        title: "Iteration",
+        dataIndex: "iteration",
+        key: "iteration"
     },
     {
-      title: "XL",
-      dataIndex: "xl",
-      key: "xl"
+        title: "XL",
+        dataIndex: "xl",
+        key: "xl"
     },
     {
-      title: "XR",
-      dataIndex: "xr",
-      key: "xr"
+        title: "XR",
+        dataIndex: "xr",
+        key: "xr"
     },
     {
         title: "X",
@@ -29,14 +29,13 @@ const columns = [
         key: "x"
     },
     {
-      title: "Error",
-      key: "error",
-      dataIndex: "error"
+        title: "Error",
+        key: "error",
+        dataIndex: "error"
     }
-  ];
+];
 var fx = " ";
 class bisection extends Component {
-    
     constructor() {
         super();
         this.state = {
@@ -44,7 +43,6 @@ class bisection extends Component {
             xl: 0,
             xr: 0,
             showOutputCard: false,
-            //showinput : true,
             showGraph: false,
             moveLeft: false,
             showapi: false
@@ -52,18 +50,18 @@ class bisection extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.bisection = this.bisection.bind(this);
     }
-    
-    databaseAPI = async()=>{
-        var response = await axios.get('http://localhost:3010/api/users/showbisection').then(res => {return res.data});
+
+    databaseAPI = async () => {
+        var response = await axios.get('http://localhost:3010/api/users/showbisection').then(res => { return res.data });
         this.setState({
-            fx:response['data'][0]['fx'],
-            xl:response['data'][0]['xl'],
-            xr:response['data'][0]['xr']
+            fx: response['data'][0]['fx'],
+            xl: response['data'][0]['xl'],
+            xr: response['data'][0]['xr']
         })
         alert(this.state.fx);
         alert(this.state.xl);
         alert(this.state.xr);
-        this.bisection(this.state.xl,this.state.xr);
+        this.bisection(this.state.xl, this.state.xr);
     }
 
     bisection(xl, xr) {
@@ -143,27 +141,27 @@ class bisection extends Component {
         });
 
     }
-    
+
     render() {
-        return(
+        return (
             <div style={{ padding: "10px" }}>
-            <div>
+                <div>
                     <br></br><br></br><br></br><br></br>
                     <span style={{ color: 'Black', fontSize: '24px' }}>Bisection iteration</span>
                     <br></br><br></br>
                     <Card
 
-                    bordered
-                    style={{ backgroundColor: 'rgb(55, 76, 104)', borderRadius: '15px' }}
-                    onChange={this.handleChange}
-                    id="inputCard"
+                        bordered
+                        style={{ backgroundColor: 'rgb(55, 76, 104)', borderRadius: '15px' }}
+                        onChange={this.handleChange}
+                        id="inputCard"
                     >
-                                <span style={{ color: 'white', fontSize: '24px' }}>F(x)</span><Input size="middle" name="fx" ></Input>
-                                <span style={{ color: 'white', fontSize: '24px' }}>X(l)</span><Input size="middle" name="xl" ></Input>
-                                <span style={{ color: 'white', fontSize: '24px' }}>X(r)</span><Input size="middle" name="xr" ></Input><br></br><br></br>
-                                <Button type="primary"  size="large" onClick={()=>this.bisection(parseFloat(this.state.xl), parseFloat(this.state.xr))}>Submit</Button><br></br><br></br>
-                                <Button type="primary" danger size="large" onClick={()=>this.databaseAPI()}>Exampleinput</Button>
-                           
+                        <span style={{ color: 'white', fontSize: '24px' }}>F(x)</span><Input size="middle" name="fx" ></Input>
+                        <span style={{ color: 'white', fontSize: '24px' }}>X(l)</span><Input size="middle" name="xl" ></Input>
+                        <span style={{ color: 'white', fontSize: '24px' }}>X(r)</span><Input size="middle" name="xr" ></Input><br></br><br></br>
+                        <Button type="primary" size="large" onClick={() => this.bisection(parseFloat(this.state.xl), parseFloat(this.state.xr))}>Submit</Button><br></br><br></br>
+                        <Button type="primary" danger size="large" onClick={() => this.databaseAPI()}>Exampleinput</Button>
+
                     </Card>
                     {this.state.showGraph &&
                         <Card
@@ -180,19 +178,19 @@ class bisection extends Component {
                             </LineChart>
                         </Card>
                     }
-                    {this.state.showOutputCard && 
+                    {this.state.showOutputCard &&
                         <Card
-                        title={"Output"}
-                        bordered={true}
-                        style={{ backgroundColor: 'rgb(55, 76, 104)', borderRadius: '15px', marginBlockStart:"2%"}}
-                        id="outputCard"
+                            title={"Output"}
+                            bordered={true}
+                            style={{ backgroundColor: 'rgb(55, 76, 104)', borderRadius: '15px', marginBlockStart: "2%" }}
+                            id="outputCard"
                         >
-                            <Table columns={columns} dataSource={dataInTable}  bodyStyle={{fontWeight: "bold", fontSize: "18px", color: "black"}}
+                            <Table columns={columns} dataSource={dataInTable} bodyStyle={{ fontWeight: "bold", fontSize: "18px", color: "black" }}
                             ></Table>
                         </Card>
-                    }                    
+                    }
                 </div>
-                
+
             </div>
         );
     }

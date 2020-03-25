@@ -4,6 +4,9 @@ var router = express.Router();
 let bisec_model = require('../models/bisec_model');
 let false_model = require('../models/false_model');
 let newton_model = require('../models/newton_model');
+let Onepoint_model = require('../models/Onepoint_model');
+let secant_model = require('../models/secant_model');
+
 
 let Trap_model = require('../models/Trap_model');
 let Simpson_model = require('../models/Simpson_model');
@@ -266,6 +269,44 @@ router.get('/shownewton', function(req, res, next) {
 router.post('/newton_model',(req,res)=>{
   console.log(req.body);
   let doc = new newton_model(req.body);
+  doc.save((err,data)=>{
+    if(err) throw err;
+    res.send({success:true});
+  })
+})
+///////////////////////////////////////////////////////////////
+router.get('/showOnepoint', function(req, res, next) {
+ 
+  Onepoint_model.find().sort({age:1}).exec((err,data)=>{
+    console.log(data);
+    return res.json({success:true,data:data});
+  })
+
+});
+
+
+router.post('/Onepoint_model',(req,res)=>{
+  console.log(req.body);
+  let doc = new Onepoint_model(req.body);
+  doc.save((err,data)=>{
+    if(err) throw err;
+    res.send({success:true});
+  })
+})
+///////////////////////////////////////////////////////////////
+router.get('/showsecant', function(req, res, next) {
+ 
+  secant_model.find().sort({age:1}).exec((err,data)=>{
+    console.log(data);
+    return res.json({success:true,data:data});
+  })
+
+});
+
+
+router.post('/secant_model',(req,res)=>{
+  console.log(req.body);
+  let doc = new secant_model(req.body);
   doc.save((err,data)=>{
     if(err) throw err;
     res.send({success:true});

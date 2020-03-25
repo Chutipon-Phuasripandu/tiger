@@ -1,0 +1,2 @@
+{"_id":{"$oid":"5e7a05fce8a158c378a23591"},"fx":"x^2","Order":{"$numberInt":"1"},"x":{"$numberInt":"1"},"h":{"$numberDouble":"0.25"},"__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e7a0626e8a158c378a23592"},"fx":"x^2-13","Order":{"$numberInt":"2"},"x":{"$numberInt":"1"},"h":{"$numberDouble":"0.25"},"__v":{"$numberInt":"0"}}

@@ -113,7 +113,7 @@ class Newton extends Component {
             <div style={{ padding: "30px" }}>
                 <div>
                     <br></br><br></br><br></br><br></br>
-                    <span style={{ color: 'Black', fontSize: '24px' }}>Newton</span>
+                    <span style={{ color: 'Black', fontSize: '24px' }}>Newton Raphson</span>
                     <br></br><br></br>
                     <Card
 
